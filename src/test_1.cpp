@@ -1,4 +1,9 @@
-#include <windows.h>
+#include "flow/flow.h"
+
+/*int main()
+{
+  return 0;
+}*/
 
 /*
 typedef struct tagWNDCLASS {
@@ -20,7 +25,7 @@ typedef struct tagWNDCLASS {
 } WNDCLASS, *PWNDCLASS;
 */
 
-int CALLBACK WinMain
+/*int CALLBACK WinMain
 (
 	HINSTANCE hInstance,
 	HINSTANCE hPrevInstance,
@@ -42,4 +47,4 @@ int CALLBACK WinMain
 	MessageBox(0, "This in just a test!", "Testing", MB_OK | MB_ICONINFORMATION);
 
 	return 0;
-}
+}*/

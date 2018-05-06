@@ -19,9 +19,17 @@ int CALLBACK WinMain
 );
 
 namespace zn
-{
-	/*struct Window
+{	
+	enum CloseOperation
 	{
-		WNDCLASS window_class = {};
-	};*/
+		DISPOSE,
+		EXIT,
+		FREEZE // ???
+	};
+	
+	struct Window
+	{
+		bool resizable;
+		CloseOperation close_operation;
+	};
 }

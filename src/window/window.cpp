@@ -8,7 +8,38 @@ LRESULT CALLBACK PrimaryWindowCallback
 	LPARAM lParam
 )
 {
+    LRESULT result = 0;
+    
+    switch (message)
+    {
+        case WM_SIZE:       // Window resize
+        {
 
+        } break;
+
+        case WM_DESTROY:    // System closes window
+        {
+
+        } break;
+
+        case WM_CLOSE:      // User closes window
+        {
+
+        } break;
+
+        case WM_ACTIVATEAPP:    // User clicks on window
+        {
+
+        } break;
+
+        default:            // Nothing of the above happened
+        {
+            result = DefWindowProc(window, message, wParam, lParam); // Handle whatever the message is the windows' 
+                                                                     //default way
+        } break;
+    }
+
+    return result;
 }
 
 int CALLBACK WinMain

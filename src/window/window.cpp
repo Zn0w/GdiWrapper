@@ -14,26 +14,27 @@ LRESULT CALLBACK PrimaryWindowCallback
     {
         case WM_SIZE:       // Window resize
         {
-
+            std::cout << "WM_SIZE" << std::endl;
         } break;
 
         case WM_DESTROY:    // System closes window
         {
-
+            std::cout << "WM_DESTROY" << std::endl;
         } break;
 
         case WM_CLOSE:      // User closes window
         {
-
+            std::cout << "WM_CLOSE" << std::endl;
         } break;
 
         case WM_ACTIVATEAPP:    // User clicks on window
         {
-
+            std::cout << "WM_ACTIVATEAPP" << std::endl;
         } break;
 
         default:            // Nothing of the above happened
         {
+            //OutputDebugStringA("default");
             result = DefWindowProc(window, message, wParam, lParam); // Handle whatever the message is the windows' 
                                                                      //default way
         } break;
@@ -61,7 +62,43 @@ int CALLBACK WinMain
     //window_class.lpszMenuName;
     window_class.lpszClassName = "RootWindow";
 
-	MessageBox(0, "This in just a test!", "Testing", MB_OK | MB_ICONINFORMATION);
+	// Open a window
+    if (RegisterClass(&window_class))
+    {
+        HWND window_handle = CreateWindowEx(
+            0,
+            window_class.lpszClassName,
+            "Debug Version Window",
+            WS_OVERLAPPEDWINDOW | WS_VISIBLE,
+            CW_USEDEFAULT,
+            CW_USEDEFAULT,
+            CW_USEDEFAULT,
+            CW_USEDEFAULT,
+            0,
+            0,
+            hInstance,
+            0
+        );
+
+        if (window_handle)
+        {
+            MSG message;
+            
+            for (;;)
+            {
+                BOOL message_result = GetMessage(&message, 0, 0, 0);
+                if (message_result > 0)
+                {
+                    TranslateMessage(&message);
+                    DispatchMessage(&message);
+                }
+            }
+        }
+    }
+    else
+    {
+        OutputDebugStringA("Failed to create a window");
+    }
 
 	return 0;
 }

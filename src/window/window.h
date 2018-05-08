@@ -2,6 +2,8 @@
 
 #include <windows.h>
 
+#include <iostream>
+
 LRESULT CALLBACK PrimaryWindowCallback
 (
 	HWND   window,
